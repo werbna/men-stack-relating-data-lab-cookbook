@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add a Recipe</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a Recipe</title>
+  </head>
+  <body>
+    <form action="/recipes" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="instruction">Instruction:</label>
+      <textarea name="instruction" id="instruction"></textarea>
+
+      <label for="ingredients">Ingredients:</label>
+      <input type="text" name="ingredients" id="ingredients" ></input>
+      <button type="submit">Create Recipe</button>
+    </form>
+  </body>
 </html>
