@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const Ingredient = require('../models/ingredient');
 const User = require("../models/user.js");
 const Recipe = require("../models/recipe.js");
 const { render } = require("ejs");
@@ -92,3 +92,21 @@ router.delete('/:recipeId/', async (req,res) => {
 })
 
 module.exports = router;
+exports.getNewRecipeForm = async (req, res) => {
+  try {
+    const ingredients = await Ingredient.find({});
+    res.render('recipes/new', { ingredients });
+  } catch (err) {
+    res.status(500).send('Error loading ingredients');
+  }
+};
+
+exports.getEditRecipeForm = async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id).populate('ingredients');
+    const ingredients = await Ingredient.find({});
+    res.render('recipes/edit', { recipe, ingredients });
+  } catch (err) {
+    res.status(500).send('Error loading recipe or ingredients');
+  }
+};
