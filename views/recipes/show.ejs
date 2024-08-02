@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= recipe.name %></title>
+</head>
+<body>
+  <h1><%= recipe.name %></h1>
+  <p><strong>Instructions:</strong> <%= recipe.instruction || 'No instructions provided.' %></p>
+
+  <p><strong>Ingredients:</strong></p>
+  <ul>
+    <% if (recipe.ingredients.length > 0) { %>
+      <% recipe.ingredients.forEach(ingredient => { %>
+        <li><%= ingredient.name || 'No name available' %></li>
+      <% }) %>
+    <% } else { %>
+      <li>No ingredients listed.</li>
+    <% } %>
+  </ul>
+
+  <p><strong>Created by:</strong> <%= recipe.owner.username || 'Unknown' %></p>
+
+  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+  <a href="/recipes/<%= recipe._id %>/edit/">Edit Recipe</a>
+  <a href="/recipes">Back to recipes</a>
+</body>
+</html>

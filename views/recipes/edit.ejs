@@ -6,14 +6,15 @@
     <title>Add a Recipe</title>
   </head>
   <body>
-    <form action="/recipes" method="POST">
+    <form action="/recipes/<%= recipe._id %>/?_method=PUT" method="POST">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" value="<%= recipe.name %>">
 
       <label for="instruction">Instruction:</label>
-      <textarea name="instruction" id="instruction"></textarea>
+      <textarea name="instruction"><%= recipe.instruction %></textarea>
 
-      <button type="submit">Create Recipe</button>
+
+      <button type="submit">Edit Recipe</button>
     </form>
   </body>
 </html>

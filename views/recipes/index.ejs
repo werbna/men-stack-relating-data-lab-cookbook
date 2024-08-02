@@ -8,6 +8,18 @@
 <body>
   <h1>Welcome to my recipes.</h1>
 
+  <% if (recipes.length > 0) { %>
+    <ul>
+      <% recipes.forEach(recipe => { %>
+        <li>
+          <a href="/recipes/<%= recipe._id %>"><%= recipe.name %> </a>
+          - <%= recipe.description %></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>You have not created any recipes yet.</p>
+  <% } %>
+
   <a href="/recipes/new">Add a recipe</a>
 </body>
 </html>
