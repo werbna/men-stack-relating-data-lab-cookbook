@@ -6,6 +6,7 @@
   <title>My Recipes</title>
 </head>
 <body>
+  <%- include('../partials/_navbar.ejs')  %>
   <h1>Welcome to my recipes.</h1>
 
   <% if (recipes.length > 0) { %>
@@ -19,6 +20,17 @@
   <% } else { %>
     <p>You have not created any recipes yet.</p>
   <% } %>
+
+  <h1>Everyones recipes.</h1>
+  <ul>
+    <% allRecipes.forEach(recipe=> { %>
+      <li>
+        to make <a href="/recipes/<%= recipe._id %>">
+          <%= recipe.name %>
+        </a> you gotta <%= recipe.instructions %>
+      </li>
+      <% }) %>
+  </ul>
 
   <a href="/recipes/new">Add a recipe</a>
 </body>
