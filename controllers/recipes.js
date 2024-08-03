@@ -47,9 +47,6 @@ router.get('/:recipeId', async (req, res) => {
   }
 })
 
-
-
-
 router.get('/:recipeId/edit', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId).populate('owner');
@@ -73,9 +70,6 @@ router.put('/:recipeId', async (req, res) => {
   }
 });
 
-
-
-
 router.delete('/:recipeId/', async (req,res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId)
@@ -92,21 +86,4 @@ router.delete('/:recipeId/', async (req,res) => {
 })
 
 module.exports = router;
-exports.getNewRecipeForm = async (req, res) => {
-  try {
-    const ingredients = await Ingredient.find({});
-    res.render('recipes/new', { ingredients });
-  } catch (err) {
-    res.status(500).send('Error loading ingredients');
-  }
-};
 
-exports.getEditRecipeForm = async (req, res) => {
-  try {
-    const recipe = await Recipe.findById(req.params.id).populate('ingredients');
-    const ingredients = await Ingredient.find({});
-    res.render('recipes/edit', { recipe, ingredients });
-  } catch (err) {
-    res.status(500).send('Error loading recipe or ingredients');
-  }
-};

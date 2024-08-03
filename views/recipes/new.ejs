@@ -13,6 +13,13 @@
       <label for="instruction">Instruction:</label>
       <textarea name="instruction" id="instruction"></textarea>
 
+      <label for="ingredients">Ingredients:</label>
+        <select id="ingredients" name="ingredients" multiple>
+            <% ingredients.forEach(ingredient => { %>
+                <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
+            <% }); %>
+        </select>
+
       <button type="submit">Create Recipe</button>
     </form>
   </body>
